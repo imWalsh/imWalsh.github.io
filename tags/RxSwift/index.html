@@ -13,7 +13,7 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#2f4154">
+  <meta name="theme-color" content="#43B9AE">
   <meta name="description" content="生′的博客">
   <meta name="author" content="生">
   <meta name="keywords" content="iOS">
@@ -215,6 +215,29 @@
   
 
   
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'true' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"","artist":"","url":"/bgm/Cozy Sofa.mp3","cover":"/bgm/cover/ilomilo.jpg"},{"name":"","artist":"","url":"/bgm/Me and My Paper Plane.mp3","cover":"/bgm/cover/ilomilo.jpg"},{"name":"","artist":"","url":"/bgm/Music School.mp3","cover":"/bgm/cover/ilomilo.jpg"},{"name":"","artist":"","url":"/bgm/Once Upon.mp3","cover":"/bgm/cover/ilomilo.jpg"},{"name":"","artist":"","url":"/bgm/Sunny Days.mp3","cover":"/bgm/cover/ilomilo.jpg"},{"name":"","artist":"","url":"/bgm/Twinkly Ladybugs.mp3","cover":"/bgm/cover/ilomilo.jpg"}]
+    });
+  }
+</script>
+
+  
 
   
 
@@ -267,7 +290,7 @@
         '  ',
         "标签 - RxSwift&nbsp;",
       ],
-      cursorChar: "_",
+      cursorChar: "|",
       typeSpeed: 70,
       loop: false,
     });
