@@ -212,7 +212,7 @@
 <blockquote>
 <p>start—-&lt;NSThread: 0x280b84c40&gt;{number = 6, name = com.live.thread}</p>
 </blockquote>
-<p>我们知道一个线程执行完任务后就会自动销毁，再次调用此线程去执行任务即会报错：<br><img src="/.com//0.png" srcset="/img/loading.gif" alt><br>所以我们一般启动Runloop来使线程常驻，修改代码如下：</p>
+<p>我们知道一个线程执行完任务后就会自动销毁，再次调用此线程去执行任务即会报错：<br><img src="/img/0.png" srcset="/img/loading.gif" alt=""><br>所以我们一般启动Runloop来使线程常驻，修改代码如下：</p>
 <pre><code class="hljs objectivec">- (<span class="hljs-keyword">void</span>)start &#123;
     <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@"start----%@"</span>,[<span class="hljs-built_in">NSThread</span> currentThread]);
     <span class="hljs-keyword">@autoreleasepool</span> &#123;
