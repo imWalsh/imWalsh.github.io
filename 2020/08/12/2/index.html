@@ -199,7 +199,11 @@
 </ol>
 <p>一般图像处理、数据拷贝、编解码带来的延时，都是 ms 级别的，真正会产生比较大延时的地方，一个是互联网上的网络传输延时，另一个就是业务代码中的缓冲区了。</p>
 <h2 id="协议延时"><a href="#协议延时" class="headerlink" title="协议延时"></a><center>协议延时</center></h2><p>通常标准的直播协议有 RTMP，HLV，HLS 三种，一般 RTMP/HLV 协议的延时在 1～3s，HLS 协议的直播延时则会更大，注重延时的直播应用，大都会选择 RTMP/HLV 协议，这些协议均是基于 tcp 的协议，tcp 协议的多个特性导致其延时明显要高于基于 udp 的私有协议，主要有如下方面：</p>
-<p>建立连接的三次握手<br>ACK 机制<br>丢包重传</p>
+<ul>
+<li>建立连接的三次握手</li>
+<li>ACK 机制</li>
+<li>丢包重传</li>
+</ul>
 <p>因此，如果想从本质上解决直播延时问题，还是要换成基于 udp 的私有协议来传输数据。</p>
 <h2 id="RTMP和RTSP的区别和适用范围"><a href="#RTMP和RTSP的区别和适用范围" class="headerlink" title="RTMP和RTSP的区别和适用范围"></a><center>RTMP和RTSP的区别和适用范围</center></h2><p>从网络上接收视频时首先要解协议（RTSP/RTMP/HTTP），然后是解格式（MKV，RMVB），之后才是将视频（H264）和音频（AAC）格式数据分别解码为图像（RGB/YUV）和声音（PCM），再根据时间戳同步播放。 </p>
 <p>RTSP+RTP主要用于IPTV，原因是传输数据使用的是UDP，在网络环境比较稳定的情况下，传输效率是比较高的； </p>
