@@ -470,6 +470,7 @@ img[srcset] {
 .hover-with-bg {
   display: inline-block;
   padding: 0.45rem;
+  text-decoration: underline;
 }
 .hover-with-bg:hover {
   background-color: var(--link-hover-bg-color);
