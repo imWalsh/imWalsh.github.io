@@ -216,9 +216,7 @@ IJKFFOptions *options = [IJKFFOptions optionsByDefault];
 <span class="hljs-comment">// 如果是rtsp协议，可以优先用tcp(默认是用udp)</span>
 [options <span class="hljs-string">setFormatOptionValue:</span>@<span class="hljs-string">"tcp"</span> <span class="hljs-string">forKey:</span>@<span class="hljs-string">"rtsp_transport"</span>];
 <span class="hljs-comment">// 帧速率（fps）可以改，确认非标准帧率会导致音画不同步，所以只能设定为15或者29.97）</span>
-[options <span class="hljs-string">setPlayerOptionIntValue:</span><span class="hljs-number">29.97</span> <span class="hljs-string">forKey:</span>@<span class="hljs-string">"r"</span>]; 
-<span class="hljs-comment">// 跳帧开关</span>
-[options <span class="hljs-string">setPlayerOptionIntValue:</span><span class="hljs-number">0</span> <span class="hljs-string">forKey:</span>@<span class="hljs-string">"framedrop"</span>]; 
+[options <span class="hljs-string">setPlayerOptionIntValue:</span><span class="hljs-number">29.97</span> <span class="hljs-string">forKey:</span>@<span class="hljs-string">"r"</span>];  
 <span class="hljs-comment">// 开启硬编码 （默认是 0 ：软解）（硬件解码CPU消耗低。软解，更稳定）</span>
 [options <span class="hljs-string">setPlayerOptionIntValue:</span><span class="hljs-number">1</span> <span class="hljs-string">forKey:</span>@<span class="hljs-string">"videotoolbox"</span>]; 
 <span class="hljs-comment">// 重连开启 BOOL</span>
@@ -230,8 +228,6 @@ IJKFFOptions *options = [IJKFFOptions optionsByDefault];
 [options <span class="hljs-string">setCodecOptionIntValue:</span>IJK_AVDISCARD_ALL <span class="hljs-string">forKey:</span>@<span class="hljs-string">"skip_loop_filter"</span>];
 <span class="hljs-comment">// 最大缓存大小是3秒，可以依据自己的需求修改</span>
 [options <span class="hljs-string">setPlayerOptionIntValue:</span><span class="hljs-number">1000</span> <span class="hljs-string">forKey:</span>@<span class="hljs-string">"max_cached_duration"</span>];
-<span class="hljs-comment">// 关闭播放器缓冲</span>
-[options <span class="hljs-string">setPlayerOptionIntValue:</span><span class="hljs-number">0</span> <span class="hljs-string">forKey:</span>@<span class="hljs-string">"packet-buffering"</span>];
 <span class="hljs-comment">// 解码参数，画面更清晰</span>
 [options <span class="hljs-string">setCodecOptionIntValue:</span>IJK_AVDISCARD_DEFAULT <span class="hljs-string">forKey:</span>@<span class="hljs-string">"skip_loop_filter"</span>];
 <span class="hljs-comment">// 底下这几句补上，可以大大提高ijkplayer打开直播流的速度</span>
@@ -240,7 +236,9 @@ IJKFFOptions *options = [IJKFFOptions optionsByDefault];
 [options <span class="hljs-string">setOptionIntValue:</span><span class="hljs-number">10240</span>L <span class="hljs-string">forKey:</span>@<span class="hljs-string">"probesize"</span> <span class="hljs-string">ofCategory:</span><span class="hljs-number">1</span>];
 <span class="hljs-comment">// 每处理一个packet之后刷新io上下文</span>
 [options <span class="hljs-string">setOptionIntValue:</span><span class="hljs-number">1</span>L <span class="hljs-string">forKey:</span>@<span class="hljs-string">"flush_packets"</span> <span class="hljs-string">ofCategory:</span><span class="hljs-number">1</span>];
+<span class="hljs-comment">// 关闭播放器缓冲</span>
 [options <span class="hljs-string">setOptionIntValue:</span><span class="hljs-number">0</span>L <span class="hljs-string">forKey:</span>@<span class="hljs-string">"packet-buffering"</span> <span class="hljs-string">ofCategory:</span><span class="hljs-number">4</span>];
+<span class="hljs-comment">// 跳帧开关</span>
 [options <span class="hljs-string">setOptionIntValue:</span><span class="hljs-number">1</span>L <span class="hljs-string">forKey:</span>@<span class="hljs-string">"framedrop"</span> <span class="hljs-string">ofCategory:</span><span class="hljs-number">4</span>];</code></pre>
 <p>IJKFFMoviePlayerController *playerController = [[IJKFFMoviePlayerController alloc] initWithContentURL:liveURL withOptions:options];</p>
 <pre><code class="hljs angelscript">① 
@@ -397,7 +395,7 @@ IJKFFOptions *options = [IJKFFOptions optionsByDefault];
     new APlayer({
       container: document.getElementById('aplayer'),
       fixed: true,
-      autoplay: 'true' === 'true',
+      autoplay: 'false' === 'true',
       loop: 'all',
       order: 'random',
       theme: '#b7daff',
